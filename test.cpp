@@ -28,6 +28,7 @@ bool validateKey(const std::string& json, size_t& pos){
 
         pos++; // Skip '\"'
 
+        skipWhitespace(json, pos);
         if (json[pos] != ':') {
             std::cout << "Invalid JSON: Expected : at " << pos << std::endl;
             return false;
@@ -270,6 +271,12 @@ int main() {
     bool isValid = validate(jsonTXT);
 
     std::cout << isValid << std::endl;
+
+    // for (size_t i = 190; i < 202; i++)
+    // {
+    //     std::cout << jsonTXT[i];
+    // }
+    
 
     std::cout << std::endl<<jsonTXT.length();
 
