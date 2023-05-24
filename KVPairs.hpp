@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cctype>
 #include <map>
-#include <Parser.cpp>
+#include "Parser.cpp"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 
