@@ -130,14 +130,54 @@ bool validateValue(const std::string& json, size_t& pos) {
     //     return true;
     // }
 
-    // if (json[pos] == '{') {
-    //     if(!validateObject(json, pos)) return false;
-    // }
-    // else if (json[pos] == '[') {
-    //     if(!validateArray(json, pos)) return false;
-    // }
+    if (json[pos] == '{') {
+        if(!validateObject(json, pos)) return false;
 
-    if (!validateKey(json, pos))
+        if (json[++pos] != ',')
+        {
+            skipWhitespace(json, pos);
+           
+            if (json[pos] == '}' || json[pos] == ']') {
+                // pos++;
+                return true;
+            }
+
+            else if (json[pos] != '}' || json[pos != ']'])
+            {
+                std::cout << "Invalid JSON: Expected ',' at position " << pos << std::endl;
+                return false;
+            }
+            
+        }
+
+        pos++;
+        skipWhitespace(json, pos);        
+    }
+    else if (json[pos] == '[') {
+        if(!validateArray(json, pos)) return false;
+        
+        if (json[++pos] != ',')
+        {
+            skipWhitespace(json, pos);
+           
+            if (json[pos] == '}' || json[pos] == ']') {
+                // pos++;
+                return true;
+            }
+
+            else if (json[pos] != '}' || json[pos != ']'])
+            {
+                std::cout << "Invalid JSON: Expected ',' at position " << pos << std::endl;
+                return false;
+            }
+            
+        }
+
+        pos++;
+        skipWhitespace(json, pos);  
+    }
+
+    else if (!validateKey(json, pos))
     {
         return false;
     }
@@ -177,9 +217,13 @@ bool validateValue(const std::string& json, size_t& pos) {
         // std::cout << "Currently at: " << json[pos] << " Number: " << pos << std::endl;
         skipWhitespace(json, pos);
         // std::cout << "Currently at: " << json[pos] << " Number: " << pos << std::endl;
-        
+        // std::cout << json[pos];
         if (json[pos] == '}') {
             // pos++;
+            return true;
+        }
+
+        else if(json[pos] == ']' && pos < json.length()){
             return true;
         }
 
@@ -227,7 +271,7 @@ int main() {
 
     std::cout << isValid << std::endl;
 
-    std::cout << jsonTXT[123] << std::endl<<jsonTXT.length();
+    std::cout << std::endl<<jsonTXT.length();
 
     file.close();
 }
