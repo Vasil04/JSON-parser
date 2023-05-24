@@ -1,23 +1,15 @@
-#ifndef MYNAMESPACE_HPP
-#define MYNAMESPACE_HPP
+#include "Controller.h"
 
-#include <iostream>
-#include <string>
-#include <cctype>
-#include <string>
-#include <fstream>
 
-namespace MyController{
 
-    void skipWhitespace(const std::string& json, size_t& pos) {
+    void MyController::skipWhitespace(const std::string& json, size_t& pos) {
         while (pos < json.length() && std::isspace(json[pos])) {
             pos++;
         }
     }
 
-    bool validateValue(const std::string& json, size_t& pos);
-
-    bool validateKey(const std::string& json, size_t& pos){
+    bool MyController::validateValue(const std::string& json, size_t& pos);
+    bool MyController::validateKey(const std::string& json, size_t& pos){
         if (json[pos] == '"') {
             pos++; // Skip '\"'
 
@@ -49,7 +41,7 @@ namespace MyController{
         }
     }
 
-    bool validateObject(const std::string& json, size_t& pos) {
+    bool MyController::validateObject(const std::string& json, size_t& pos) {
         // skipWhitespace(json, pos);
 
         // if (json[pos] != '{') {
@@ -92,7 +84,7 @@ namespace MyController{
         return true;
     }
 
-    bool validateArray(const std::string& json, size_t& pos) {
+    bool MyController::validateArray(const std::string& json, size_t& pos) {
         pos++; // Skip '['
 
         skipWhitespace(json, pos);
@@ -128,7 +120,7 @@ namespace MyController{
         return true;
     }
 
-    bool validateValue(const std::string& json, size_t& pos) {
+    bool MyController::validateValue(const std::string& json, size_t& pos) {
 
         skipWhitespace(json, pos);
         // if (pos == json.length() - 1) {
@@ -247,7 +239,7 @@ namespace MyController{
         validateValue(json, pos);
     }
 
-    bool validate(const std::string& json) {
+    bool MyController::validate(const std::string& json) {
         size_t pos = 0;
 
         if(json[pos] != '{') return false;
@@ -255,7 +247,3 @@ namespace MyController{
         pos++;
         return validateValue(json, pos);
     }
-
-}
-
-#endif // MYNAMESPACE_HPP

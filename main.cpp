@@ -3,8 +3,8 @@
 #include <cctype>
 #include <map>
 #include <fstream>
-#include "KVPairs.hpp"
-#include "Controller.hpp"
+#include "KVPairs.h"
+#include "Controller.h"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 using namespace MyController;
@@ -28,6 +28,12 @@ int main(){
 
     file.close();
 
-    cout << validate(jsonTXT);
+    if(!MyController::validate(jsonTXT)){
+        return -1;
+    }
+
+
+    // cout << "Hello";
+    return 0;
     
 }
