@@ -4,7 +4,7 @@
 #include <fstream>
 #include <cctype>
 #include <map>
-#include "Parser.cpp"
+#include "Parser.h"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 
@@ -20,9 +20,11 @@ class KVPairs : public Parser{
 
         void printPair (string key);
 
+        void printAllPairs ();
+
         map<string, string> getSimplePairs ();
 
-        void parseData(string& jsonTXT) override;
+        void parseData(string& jsonTXT, const string key, size_t& position) override;
 
     public:
         KVPairs();

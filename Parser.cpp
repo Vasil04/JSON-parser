@@ -1,21 +1,15 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <cctype>
-#include <map>
+#include "Parser.h"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
-
-class Parser {
-
-public:
-    virtual void parseData(string& jsonTXT);
-
-    void skipWhiteSpaces(const string& jsonTXT, int& position) const{
+    void Parser::skipWhiteSpaces(const string& jsonTXT, size_t& position) {
 
         while(position < jsonTXT.length() && std::isspace(jsonTXT[position])) position++;
 
     }
-    
-    virtual ~Parser(){} 
-};
+
+    void Parser::parseData(string& jsonTXT, const string key, size_t& position){
+        
+    }
+
+    Parser::~Parser(){
+
+    }
