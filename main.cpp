@@ -3,8 +3,8 @@
 #include <cctype>
 #include <map>
 #include <fstream>
-#include "KVPairs.h"
-#include "Controller.h"
+#include "KVPairs.hpp"
+#include "Controller.hpp"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 using namespace MyController;

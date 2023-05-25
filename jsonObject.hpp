@@ -4,8 +4,8 @@
 #include <fstream>
 #include <cctype>
 #include <map>
-#include "Parser.h"
-#include "KVPairs.h"
+#include "Parser.hpp"
+#include "KVPairs.hpp"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 
