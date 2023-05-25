@@ -1,4 +1,4 @@
-#include "Parser.h"
+#include "Parser.hpp"
 
     void Parser::skipWhiteSpaces(const string& jsonTXT, size_t& position) {
 

@@ -1,32 +1,42 @@
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <cctype>
-#include <map>
+#include "jsonObject.h"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
-
-class JsonObject{
-
-private:
-    string jsonTXT;
-    
-
-private:
-
-
-
-public:
-
-    JsonObject(string fileName){
+    jsonObject::jsonObject(){
       
     }
 
-    JsonObject(const JsonObject&) = delete;
-    JsonObject(JsonObject&&) = delete;
+    void jsonObject::parseData(string& jsonTXT, const string key, size_t& position){
+        while(jsonTXT[position] != '}'){
+            if (jsonTXT[position] == '"'){
+    
+                position ++;
+                size_t keyStart = position;
+                
+                while (position < jsonTXT.length() && jsonTXT[position] != '\"') {
+                    position++;
+                }
 
-    JsonObject& operator=(const JsonObject&) = delete;
-    JsonObject& operator=(JsonObject&&) = delete;
+                string keyLocal = jsonTXT.substr(keyStart, position - keyStart);
+                position++;
 
-    ~JsonObject();
-};
+                while(jsonTXT[position] != '"') position++;
+                position++;
+                skipWhiteSpaces(jsonTXT, position);
+
+                simplePairs.parseData(jsonTXT, keyLocal, position);
+           
+             
+            }
+            else position++;
+        }
+        allObjects[key] = simplePairs.getSimplePairs();
+    }
+
+    void jsonObject::printAllData(){
+        for (const auto& pair : allObjects)
+        {
+            cout << "Master key: " << pair.first <<endl;
+            for(const auto& deeperPair : allObjects[pair.first]){
+                cout << "Key: " << deeperPair.first << ", Value: " << deeperPair.second <<endl;
+            }
+        }
+    }

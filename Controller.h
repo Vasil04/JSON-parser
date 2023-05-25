@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
 
 #include <iostream>
 #include <string>
@@ -16,3 +17,4 @@ namespace MyController{
     bool validateValue(const std::string& json, size_t& pos);
     bool validate(const std::string& json);
 }
+#endif

@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PARSER_HPP
+#define PARSER_HPP
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -16,3 +18,4 @@ public:
     
     virtual ~Parser();
 };
+#endif

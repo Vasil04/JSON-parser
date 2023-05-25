@@ -1,4 +1,6 @@
-#pragma once
+#ifndef KVPAIRS_H
+#define KVPAIRS_H
+
 #include <iostream>
 #include <string>
 #include <fstream>
@@ -38,3 +40,4 @@ class KVPairs : public Parser{
         KVPairs& operator=(KVPairs&& other) = delete;
 
 };
+#endif

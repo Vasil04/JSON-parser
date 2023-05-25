@@ -1,4 +1,4 @@
-#include "KVPairs.hpp"
+#include "KVPairs.h"
 
 
     void KVPairs::addPairs (string key, string value){
@@ -9,7 +9,7 @@
         cout << simplePairs[key] << endl;
     }
 
-    void KVPairs::printAllPairs(){
+    void KVPairs::printAllPairs (){
         for (const auto& pair : simplePairs)
         {
             cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl; 
