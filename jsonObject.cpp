@@ -50,6 +50,8 @@
     void jsonObject::searchByKey (string key){
         for(const auto& pair : allObjects)
         {
+            if(startsWith (pair.first, key)) cout << pair.first << endl;
+            
             for(const auto& deeperPair : allObjects[pair.first]){
                 if (startsWith(deeperPair.first, key))
                 {

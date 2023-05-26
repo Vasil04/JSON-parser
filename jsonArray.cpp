@@ -60,6 +60,8 @@ void jsonArray::searchByKey (string key){
     simplePairs.searchByKey(key);
     for (const auto& pair : allMembers)
     {
+        if(startsWith (pair.first, key)) cout << pair.first << endl;
+        
         for(const auto& deeperPair : allMembers[pair.first]){
             for(const auto& deepestPair : allMembers[pair.first][deeperPair.first]){
                 if(startsWith(deepestPair.first, key)) cout << deepestPair.second << endl;
