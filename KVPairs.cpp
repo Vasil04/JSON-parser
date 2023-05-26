@@ -14,7 +14,7 @@
         {
             cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl; 
         }
-        
+        cout << endl;
     }
 
     map<string, string> KVPairs::getSimplePairs () {
@@ -31,6 +31,10 @@
         // cout << valueStart << " " << position<< endl;
         position++;
         addPairs(key, value);
+    }
+
+    void KVPairs::clear(){
+        simplePairs.clear();
     }
 
     KVPairs::KVPairs(){

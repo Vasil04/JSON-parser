@@ -6,11 +6,12 @@
 #include "KVPairs.h"
 #include "Controller.h"
 #include "jsonObject.h"
+#include "jsonArray.h"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 using namespace MyController;
 
-void someFunction(string& json, KVPairs& pairs, jsonObject& jsonObject){
+void someFunction(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray){
     size_t position = 0;
 
     // cout << json.length() << endl;
@@ -61,8 +62,10 @@ void someFunction(string& json, KVPairs& pairs, jsonObject& jsonObject){
             jsonObject.parseData(json, key, position);
         }
         else if (json[position] == '['){
-            while(json[position] != ']' && position < json.length()) position++;
+            // while(json[position] != ']' && position < json.length()) position++;
             position++;
+            jsonArray.skipWhiteSpaces(json, position);
+            jsonArray.parseData(json, key, position);
         }
         
     }
@@ -92,10 +95,12 @@ int main(){
 
     KVPairs tester;
     jsonObject jsonObject;
+    jsonArray jsonArray;
 
-    someFunction(jsonTXT, tester, jsonObject);
+    someFunction(jsonTXT, tester, jsonObject, jsonArray);
     tester.printAllPairs();
     jsonObject.printAllData();
+    jsonArray.printAllData();
     // tester.addPairs("secondKey", "secondValue");
 
     // tester.printPair("firstKey");

@@ -29,6 +29,7 @@
             else position++;
         }
         allObjects[key] = simplePairs.getSimplePairs();
+        simplePairs.clear();
     }
 
     void jsonObject::printAllData(){
@@ -39,4 +40,13 @@
                 cout << "Key: " << deeperPair.first << ", Value: " << deeperPair.second <<endl;
             }
         }
+        cout << endl;
+    }
+
+    map<string, map<string, string>> jsonObject::getObjects (){
+        return allObjects;
+    }
+
+    void jsonObject::clear(){
+        allObjects.clear();
     }

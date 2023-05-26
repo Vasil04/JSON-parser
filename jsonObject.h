@@ -1,12 +1,12 @@
-#ifndef JSONOBJECT_HPP
-#define JSONOBJECT_HPP
+#ifndef JSONOBJECT_H
+#define JSONOBJECT_H
 
 #include <iostream>
 #include <string>
 #include <fstream>
 #include <cctype>
 #include <map>
-#include "Parser.hpp"
+// #include "Parser.hpp"
 #include "KVPairs.h"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
@@ -23,6 +23,8 @@ class jsonObject : public Parser{
     
     void parseData(string& jsonTXT, const string key, size_t& position) override;
     void printAllData();
+    map<string, map<string, string>> getObjects ();
+    void clear();
 
     public:
     jsonObject();
