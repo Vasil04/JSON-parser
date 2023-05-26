@@ -47,6 +47,19 @@
         return allObjects;
     }
 
+    void jsonObject::searchByKey (string key){
+        for(const auto& pair : allObjects)
+        {
+            for(const auto& deeperPair : allObjects[pair.first]){
+                if (startsWith(deeperPair.first, key))
+                {
+                    cout << deeperPair.second << endl;
+                }
+                
+            }
+        }
+    }
+
     void jsonObject::clear(){
         allObjects.clear();
     }

@@ -24,6 +24,7 @@ class jsonObject : public Parser{
     void parseData(string& jsonTXT, const string key, size_t& position) override;
     void printAllData();
     map<string, map<string, string>> getObjects ();
+    void searchByKey (string key);
     void clear();
 
     public:

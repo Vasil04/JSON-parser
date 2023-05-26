@@ -17,6 +17,15 @@
         cout << endl;
     }
 
+    void KVPairs::searchByKey (string key){
+        for (int i = 0; i < keys.size(); i++)
+        {
+            if(startsWith(keys[i], key)){
+                printPair(keys[i]);
+            }
+        }
+    }
+
     map<string, string> KVPairs::getSimplePairs () {
         return simplePairs;
     }
@@ -31,6 +40,7 @@
         // cout << valueStart << " " << position<< endl;
         position++;
         addPairs(key, value);
+        keys.push_back(key);
     }
 
     void KVPairs::clear(){

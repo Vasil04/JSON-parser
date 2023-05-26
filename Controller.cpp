@@ -1,6 +1,14 @@
 #include "Controller.h"
 
+    void print(const KVPairs simplePairs, const jsonObject objects, const jsonArray arrays){
 
+    }
+
+    void MyController::searchKey(const string key, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
+        simplePairs.searchByKey(key);
+        objects.searchByKey(key);
+        arrays.searchByKey(key);
+    }
 
     void MyController::skipWhitespace(const std::string& json, size_t& pos) {
         while (pos < json.length() && std::isspace(json[pos])) {
@@ -247,3 +255,64 @@
         pos++;
         return validateValue(json, pos);
     }
+
+    
+    void MyController::parseData(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray){
+    size_t position = 0;
+
+    // cout << json.length() << endl;
+    while (position < json.length())
+    {
+        while(json[position] != '"' && position < json.length()) {
+            position++;
+        }
+        position++;
+
+        size_t keyStart = position;
+
+        if (!(position < json.length()))
+        {
+            break;
+        }
+        
+        while (position < json.length() && json[position] != '\"') {
+            position++;
+        }
+
+        std::string key = json.substr(keyStart, position - keyStart);
+        position++;
+
+        if (!(position < json.length()))
+        {
+            break;
+        }
+        while(json[position] != ':' && position < json.length()) position++;
+        position++;
+
+        if (!(position < json.length()))
+        {
+            break;
+        }
+
+        pairs.skipWhiteSpaces(json, position);
+        if (json[position] == '"')
+        {
+            position++;
+            pairs.parseData(json, key, position);
+            
+        }
+        else if (json[position] == '{'){
+            // while(json[position] != '}' && position < json.length()) position++;
+            position++;
+            jsonObject.skipWhiteSpaces(json, position);
+            jsonObject.parseData(json, key, position);
+        }
+        else if (json[position] == '['){
+            // while(json[position] != ']' && position < json.length()) position++;
+            position++;
+            jsonArray.skipWhiteSpaces(json, position);
+            jsonArray.parseData(json, key, position);
+        }
+        
+    }
+}

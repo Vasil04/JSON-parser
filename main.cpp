@@ -8,99 +8,61 @@
 #include "jsonObject.h"
 #include "jsonArray.h"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
+using std::string, std::cin, std::cout, std::map, std::ifstream, std::ofstream, std::endl;
 using namespace MyController;
 
-void someFunction(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray){
-    size_t position = 0;
-
-    // cout << json.length() << endl;
-    while (position < json.length())
-    {
-        while(json[position] != '"' && position < json.length()) {
-            position++;
-        }
-        position++;
-
-        size_t keyStart = position;
-
-        if (!(position < json.length()))
-        {
-            break;
-        }
-        
-        while (position < json.length() && json[position] != '\"') {
-            position++;
-        }
-
-        std::string key = json.substr(keyStart, position - keyStart);
-        position++;
-
-        if (!(position < json.length()))
-        {
-            break;
-        }
-        while(json[position] != ':' && position < json.length()) position++;
-        position++;
-
-        if (!(position < json.length()))
-        {
-            break;
-        }
-
-        pairs.skipWhiteSpaces(json, position);
-        if (json[position] == '"')
-        {
-            position++;
-            pairs.parseData(json, key, position);
-            
-        }
-        else if (json[position] == '{'){
-            // while(json[position] != '}' && position < json.length()) position++;
-            position++;
-            jsonObject.skipWhiteSpaces(json, position);
-            jsonObject.parseData(json, key, position);
-        }
-        else if (json[position] == '['){
-            // while(json[position] != ']' && position < json.length()) position++;
-            position++;
-            jsonArray.skipWhiteSpaces(json, position);
-            jsonArray.parseData(json, key, position);
-        }
-        
-    }
-}
 int main(){
 
     string jsonTXT;
 
-    // getline(cin, jsonTXT);
-
+    //to be put under "open"
     ifstream file("JSONTXT.json");
 
     if (!file.is_open()){
         cout << "Error opening the file";
         return -1;
     }
+    //end of open
 
     while (!file.eof()){
         getline(file, jsonTXT);
     }
 
+    //to be put under close:
     file.close();
 
-    if(!MyController::validate(jsonTXT)){
+    //valdiation of the text;
+    if(!validate(jsonTXT)){
         return -1;
     }
 
+    //save as, and save will be the same but instead of some name given by a string it will be the default file name
+    if (false)
+    {
+        ofstream outputFile("some name");
+        outputFile << jsonTXT;
+    }
+    
+    // some cout to be put here that shows all the features of the app:
+    //....
+
+    //example exit function, to be changed later
+    if (false){
+        return 0;
+    }
+
+
+    
     KVPairs tester;
     jsonObject jsonObject;
     jsonArray jsonArray;
 
-    someFunction(jsonTXT, tester, jsonObject, jsonArray);
-    tester.printAllPairs();
-    jsonObject.printAllData();
-    jsonArray.printAllData();
+    parseData(jsonTXT, tester, jsonObject, jsonArray);
+    // tester.printAllPairs();
+    // jsonObject.printAllData();
+    // jsonArray.printAllData();
+
+    searchKey("name", tester, jsonObject, jsonArray);
     // tester.addPairs("secondKey", "secondValue");
 
     // tester.printPair("firstKey");

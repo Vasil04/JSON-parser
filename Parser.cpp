@@ -10,6 +10,10 @@
         
     }
 
+    bool Parser::startsWith(const std::string &str, const std::string &prefix) {
+        return str.size() >= prefix.size() && str.substr(0, prefix.size()) == prefix;
+    }
+    
     Parser::~Parser(){
 
     }

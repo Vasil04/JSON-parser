@@ -15,6 +15,8 @@ public:
     virtual void parseData(string& jsonTXT, const string key, size_t& position);
 
     void skipWhiteSpaces(const string& jsonTXT, size_t& position);
+
+    bool startsWith(const std::string &str, const std::string &prefix);
     
     virtual ~Parser();
 };

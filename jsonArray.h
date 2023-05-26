@@ -25,6 +25,7 @@ class jsonArray : public Parser{
     
     void parseData(string& jsonTXT, const string key, size_t& position) override;
     void printAllData();
+    void searchByKey (string key);
 
     public:
     jsonArray();

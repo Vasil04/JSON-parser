@@ -6,6 +6,7 @@
 #include <fstream>
 #include <cctype>
 #include <map>
+#include <vector>
 #include "Parser.hpp"
 
 using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
@@ -15,12 +16,15 @@ class KVPairs : public Parser{
 
     private:
         map<string, string> simplePairs;
+        std::vector<string> keys;
 
     public:
 
         void addPairs (string key, string value);
 
         void printPair (string key);
+        
+        void searchByKey (string key);
 
         void printAllPairs ();
 

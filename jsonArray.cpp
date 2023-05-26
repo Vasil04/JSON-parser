@@ -55,3 +55,16 @@ void jsonArray::printAllData(){
         }
     }
 }
+
+void jsonArray::searchByKey (string key){
+    simplePairs.searchByKey(key);
+    for (const auto& pair : allMembers)
+    {
+        for(const auto& deeperPair : allMembers[pair.first]){
+            for(const auto& deepestPair : allMembers[pair.first][deeperPair.first]){
+                if(startsWith(deepestPair.first, key)) cout << deepestPair.second << endl;
+            }
+        }
+    }
+
+}
