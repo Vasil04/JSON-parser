@@ -6,10 +6,27 @@
     }
 
     void KVPairs::printPair (string key){
-        cout << simplePairs[key] << endl;
+        for(int i = 0; i < keys.size(); i++){
+            if (key == keys[i])
+            {
+                cout << simplePairs[key] << endl;
+                break;
+            }
+        }
+    }
+
+    bool KVPairs::containsElement(const string key){
+        for (int i = 0; i < keys.size(); i++)
+        {
+            if(keys[i] == key){
+                return true;
+            }
+        }
+        return false;
     }
 
     void KVPairs::printAllPairs (){
+        cout << endl;
         for (const auto& pair : simplePairs)
         {
             cout << "Key: " << pair.first << ", Value: " << pair.second << std::endl; 
@@ -47,11 +64,11 @@
         simplePairs.clear();
     }
 
-    KVPairs::KVPairs(){
+    // KVPairs::KVPairs(){
         
-    }
+    // }
 
-    KVPairs::KVPairs(string key, string value){
-        addPairs(key, value);
-    }
+    // KVPairs::KVPairs(string key, string value){
+    //     addPairs(key, value);
+    // }
 

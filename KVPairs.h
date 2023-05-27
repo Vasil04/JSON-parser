@@ -26,6 +26,8 @@ class KVPairs : public Parser{
         
         void searchByKey (string key);
 
+        bool containsElement(const string key);
+
         void printAllPairs ();
 
         map<string, string> getSimplePairs ();
@@ -34,15 +36,15 @@ class KVPairs : public Parser{
 
         void clear();
     public:
-        KVPairs();
+        // KVPairs();
 
-        KVPairs(string key, string value);
+        // KVPairs(string key, string value);
 
-        KVPairs(const KVPairs& other) = delete;
-        KVPairs(KVPairs&& other) = delete;
+        // KVPairs(const KVPairs& other) = delete;
+        // KVPairs(KVPairs&& other) = delete;
 
-        KVPairs& operator=(const KVPairs& other) = delete;
-        KVPairs& operator=(KVPairs&& other) = delete;
+        // KVPairs& operator=(const KVPairs& other) = delete;
+        // KVPairs& operator=(KVPairs&& other) = delete;
 
 };
 #endif

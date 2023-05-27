@@ -22,18 +22,26 @@ class jsonObject : public Parser{
     public:
     
     void parseData(string& jsonTXT, const string key, size_t& position) override;
+
     void printAllData();
+
     map<string, map<string, string>> getObjects ();
+
     void searchByKey (string key);
+
+    bool containsElement (const string path);
+
+    void setElement (const string masterKey, const string key, const string newValue);
+
     void clear();
 
     public:
-    jsonObject();
+    // jsonObject();
 
-    jsonObject(const jsonObject& other) = delete;
-    jsonObject(jsonObject&& other) = delete;
+    // jsonObject(const jsonObject& other) = delete;
+    // jsonObject(jsonObject&& other) = delete;
 
-    jsonObject& operator=(const jsonObject& other) = delete;
-    jsonObject& operator=(jsonObject&& other) = delete;
+    // jsonObject& operator=(const jsonObject& other) = delete;
+    // jsonObject& operator=(jsonObject&& other) = delete;
 };
 #endif

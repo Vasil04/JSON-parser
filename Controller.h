@@ -19,10 +19,10 @@ namespace MyController{
     bool validate(const std::string& json);
 
     //Functions to be made:
-    void print(const KVPairs simplePairs, const jsonObject objects, const jsonArray arrays);
-    void searchKey(const string key, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays); //prints all values with this key
-    void set(const string path, const string newValue);
-    void create(const string path, const string value);
+    void print(KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
+    void searchKey(const string key, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays); //done
+    void set(const string path, const string newValue, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
+    void create(const string path, const string value, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
     void deleteElement(const string path);
     void move(const string from, const string to);
 

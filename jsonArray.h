@@ -16,16 +16,26 @@ using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
 class jsonArray : public Parser{
     
     private:
-    // string key;
-    KVPairs simplePairs;
-    jsonObject jsonObject;
-    map<string, map<string, map<string, string>>> allMembers;
+
+    std::vector <string> keys;
+    map<string, map<string, string>> simpleElements;
+
+    jsonObject jsonObjectInstance;
+    // map<string, map<string, string>> allSimplePairs;
+    // size_t spCounter = 0;
+    // map<string, map<string, map<string, string>>> allMembers;
+
+    // size_t joCounter = 0;
+    map<string, map<string, std::vector<jsonObject>>> allMembers;
     
     public:
     
     void parseData(string& jsonTXT, const string key, size_t& position) override;
     void printAllData();
     void searchByKey (string key);
+    bool containsElement (const string path);
+    void setElement (const string firstKey, const string masterKey, const string secondKey, const string newValue);
+    bool checkIfArrayExists(const string key);
 
     public:
     jsonArray();

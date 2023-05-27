@@ -1,13 +1,62 @@
 #include "Controller.h"
 
-    void print(const KVPairs simplePairs, const jsonObject objects, const jsonArray arrays){
-
-    }
-
     void MyController::searchKey(const string key, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
         simplePairs.searchByKey(key);
         objects.searchByKey(key);
         arrays.searchByKey(key);
+    }
+
+    void MyController::set(const string path, const string newValue, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
+        if(path.find('/') == std::string::npos){
+            if (simplePairs.containsElement(path))
+            {
+                simplePairs.addPairs(path, newValue);
+            }
+        }
+        else {
+            if (objects.containsElement(path))
+            {
+
+                string firstKey;
+                string secondKey;
+                size_t position = 0;
+                size_t valueStart = position;
+                while (position < path.length() && path[position] != '/') {
+                        position++;
+                }
+                firstKey = path.substr(0, position);
+                position ++;
+                
+                size_t start = position;
+                while (position < path.length() && path[position] != '/') {
+                        position++;
+                }
+                secondKey = path.substr(start, position - start);
+
+                objects.setElement(firstKey, secondKey, newValue);
+            }
+            else if (true){ // needs to work with arrays.containsElement(path)
+                string firstKey;
+                string secondKey;
+                size_t position = 0;
+                size_t valueStart = position;
+                while (position < path.length() && path[position] != '/') {
+                        position++;
+                }
+                firstKey = path.substr(0, position);
+                position ++;
+                
+                size_t start = position;
+                while (position < path.length() && path[position] != '/') {
+                        position++;
+                }
+                secondKey = path.substr(start, position - start);
+                arrays.setElement(firstKey, "2", secondKey, newValue);
+            }
+            else {
+                cout <<"Element not found";
+            }
+        }
     }
 
     void MyController::skipWhitespace(const std::string& json, size_t& pos) {
@@ -256,7 +305,38 @@
         return validateValue(json, pos);
     }
 
-    
+    void MyController::create(const string path, const string value, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
+        if(path.find('/') == std::string::npos){
+            simplePairs.addPairs(path, value);
+        }
+        else {
+                string firstKey;
+                string secondKey;
+                size_t position = 0;
+                while (position < path.length() && path[position] != '/') {
+                        position++;
+                }
+                firstKey = path.substr(0, position);
+                position ++;
+                if (arrays.checkIfArrayExists(firstKey))
+                {
+                    size_t start = position;
+                    while (position < path.length() && path[position] != '/') {
+                            position++;
+                    }
+                    secondKey = path.substr(start, position - start);
+                    arrays.setElement(firstKey,"should be the number for ex. 0 or 2", secondKey, value);
+                }
+                else if (false){
+
+                }
+                else {
+                    cout << "Element not found";
+                }
+                
+        }
+    }
+
     void MyController::parseData(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray){
     size_t position = 0;
 
@@ -316,3 +396,9 @@
         
     }
 }
+
+    void MyController::print(KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
+        simplePairs.printAllPairs();
+        objects.printAllData();
+        arrays.printAllData();
+    }

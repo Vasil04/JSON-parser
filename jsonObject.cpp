@@ -1,8 +1,8 @@
 #include "jsonObject.h"
 
-    jsonObject::jsonObject(){
+    // jsonObject::jsonObject(){
       
-    }
+    // }
 
     void jsonObject::parseData(string& jsonTXT, const string key, size_t& position){
         while(jsonTXT[position] != '}'){
@@ -38,6 +38,7 @@
             cout << "Master key: " << pair.first <<endl;
             for(const auto& deeperPair : allObjects[pair.first]){
                 cout << "Key: " << deeperPair.first << ", Value: " << deeperPair.second <<endl;
+                // cout << "hello";
             }
         }
         cout << endl;
@@ -63,5 +64,46 @@
     }
 
     void jsonObject::clear(){
+        simplePairs.clear();
         allObjects.clear();
+    }
+
+    void jsonObject::setElement (const string masterKey, const string key, const string newValue){
+        allObjects[masterKey][key] = newValue;
+    }
+
+    bool jsonObject::containsElement (const string path) {
+        
+        string firstKey;
+        string secondKey;
+        size_t position = 0;
+        
+        while (position < path.length() && path[position] != '/') {
+                position++;
+        }
+        firstKey = path.substr(0, position);
+        position ++;
+
+        if (position < path.length())
+        {
+            size_t start = position;
+            while (position < path.length() && path[position] != '/') {
+                    position++;
+            }
+            secondKey = path.substr(start, position - start);
+            for(const auto& pair : allObjects)
+            {
+                if(pair.first == firstKey){
+                    for(const auto& deeperPair : allObjects[pair.first]){
+                        if (deeperPair.first == secondKey)
+                        {
+                            return true;
+                        }
+                        
+                    }
+                    return false;
+                }
+            }
+        }
+        return false;
     }
