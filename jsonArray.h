@@ -34,12 +34,23 @@ class jsonArray : public Parser{
     void printAllData();
     void searchByKey (string key);
     bool containsElement (const string path);
+
     void setElement (const string firstKey, const string masterKey, const string secondKey, const string newValue);
     void setElement (const string firstKey, const string secondKey, const string newValue);
+    void setElement(const string path, map<string, string> element);
+    
+    map<string, string> getElement (const string path);
+    void addObject (const string arrayMasterKey, map<string, string> object);
     bool checkIfArrayExists(const string key);
+
     void deleteWholeArray(const string name);
     void deleteElement(const string firstKey, const string secondKey, const string thirdKey);
+    void deleteElement(const string path);
+    void deleteObject(const string firstKey, const string secondKey);
+
     void clear();
+
+    void saveChanges(string& jsontxt);
 
     public:
     jsonArray();

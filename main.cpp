@@ -8,7 +8,7 @@
 #include "jsonObject.h"
 #include "jsonArray.h"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::ofstream, std::endl, std::getline;
+using std::string, std::cin, std::cout, std::map, std::ifstream, std::ofstream, std::ofstream, std::endl, std::getline;
 using namespace MyController;
 
 int main(){
@@ -148,6 +148,47 @@ int main(){
                 separateWord(userInput, secondWord, counter);
                 separateWord(userInput, thirdWord, counter);
                 move(secondWord, thirdWord, tester, jsonObject, jsonArray);
+            }
+            else {
+                cout << "Please open a file first" << endl;
+            }
+        }
+
+        else if(firstWord == "save") {
+            if (openCalled)
+            {               
+                saveChanges(jsonTXT, tester, jsonObject, jsonArray);
+                ofstream outFile(fileName);
+                if (outFile.is_open()) {
+                    outFile << jsonTXT;
+
+                    outFile.close();
+                    std::cout << "File write successful." << std::endl;
+                } else {
+                    std::cout << "Unable to open the file." << std::endl;
+                }
+            }
+            else {
+                cout << "Please open a file first" << endl;
+            }
+        }
+
+        else if(firstWord == "saveas") {
+            if (openCalled)
+            { 
+                fileName = "";
+                separateWord(userInput, fileName, counter); 
+                jsonTXT = "";            
+                saveChanges(jsonTXT, tester, jsonObject, jsonArray);
+                ofstream outFile(fileName);
+                if (outFile.is_open()) {
+                    outFile << jsonTXT;
+
+                    outFile.close();
+                    std::cout << "File write successful." << std::endl;
+                } else {
+                    std::cout << "Unable to open the file." << std::endl;
+                }
             }
             else {
                 cout << "Please open a file first" << endl;

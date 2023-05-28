@@ -48,6 +48,33 @@
         return allObjects;
     }
 
+    map<string, string> jsonObject::getObject (const string key){
+        return allObjects[key];
+    }
+
+    map<string, string> jsonObject::getObjectByPath (const string path){
+        string firstPart;
+        string secondPart;
+
+        size_t position = 0;
+        while (position < path.length() && path[position] != '/') {
+                position++;
+        }
+        
+        firstPart = path.substr(0, position);
+        // cout << firstKey << "hello" << endl;
+        position ++;
+        size_t start = position;
+        while (position < path.length() && path[position] != '/') {
+                position++;
+        }
+        secondPart = path.substr(start, position - start);
+
+        map <string, string> element;
+        element[secondPart] = allObjects[firstPart][secondPart];
+        return element;
+    }
+
     void jsonObject::searchByKey (string key){
         for(const auto& pair : allObjects)
         {
@@ -73,6 +100,12 @@
         allObjects[masterKey][key] = newValue;
     }
 
+    void jsonObject::setElement (const string masterKey, map <string, string> Map){
+        allObjects[masterKey][Map.begin()->first] = Map[Map.begin()->first];
+    }
+    string jsonObject::getElementValue (const string masterKey, const string key){
+        return allObjects[masterKey][key];
+    }
     bool jsonObject::checkIfObjectExists(const string key){
         for(const auto& pair : allObjects){
             if(pair.first == key){
@@ -90,6 +123,26 @@
         allObjects[firstKey].erase(secondKey);
     }
 
+    void jsonObject::deleteElement(const string path){
+        string firstPart;
+        string secondPart;
+
+        size_t position = 0;
+        while (position < path.length() && path[position] != '/') {
+                position++;
+        }
+        
+        firstPart = path.substr(0, position);
+        // cout << firstKey << "hello" << endl;
+        position ++;
+        size_t start = position;
+        while (position < path.length() && path[position] != '/') {
+                position++;
+        }
+        secondPart = path.substr(start, position - start);
+        allObjects[firstPart].erase(secondPart);
+    }
+   
     bool jsonObject::containsElement (const string path) {
         
         string firstKey;
@@ -124,4 +177,27 @@
             }
         }
         return false;
+    }
+
+    void jsonObject::saveChanges(string& jsontxt){
+        for (const auto& pair : allObjects)
+        {
+            jsontxt += '"' + pair.first + '"' + ':';
+            jsontxt += "{";
+            for(const auto& deeperPair : allObjects[pair.first]){
+                jsontxt += '"' + deeperPair.first + '"' + ':' + '"' + deeperPair.second + '"' + ',' + ' ';                             
+            }
+            jsontxt[jsontxt.rfind(',')] = ' '; 
+            jsontxt += "},";
+        }
+    }
+
+    void jsonObject::saveChangesForArray(string& jsontxt){
+        for (const auto& pair : allObjects)
+        {
+            for(const auto& deeperPair : allObjects[pair.first]){
+                jsontxt += '"' + deeperPair.first + '"' + ':' + '"' + deeperPair.second + '"' + ',' + ' ';                             
+            }
+            
+        }
     }

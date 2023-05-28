@@ -116,6 +116,26 @@ void jsonArray::setElement (const string firstKey, const string masterKey, const
     allMembers[firstKey][masterKey][0].setElement(masterKey, secondKey, newValue);
 }
 
+void jsonArray::setElement(const string path, map<string, string> element){
+    string firstPart;
+    string secondPart;
+
+    size_t position = 0;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    
+    firstPart = path.substr(0, position);
+    // cout << firstKey << "hello" << endl;
+    position ++;
+    size_t start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    secondPart = path.substr(start, position - start);
+
+    allMembers[firstPart][secondPart][0].setElement(secondPart, element.begin()->first , element[element.begin()->first]);
+}
 void jsonArray::setElement (const string firstKey, const string secondKey, const string newValue){
     string firstPart;
     string secondPart;
@@ -137,6 +157,52 @@ void jsonArray::setElement (const string firstKey, const string secondKey, const
     allMembers[firstPart][secondPart][0].setElement(secondPart, secondKey, newValue);
 }
 
+map<string, string> jsonArray::getElement (const string path){
+    string firstPart;
+    string secondPart;
+    string thirdPart;
+    map <string, string> Map;
+    size_t position = 0;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    
+    firstPart = path.substr(0, position);
+
+    position ++;
+    size_t start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    secondPart = path.substr(start, position - start);
+    position ++;
+
+    start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    thirdPart = path.substr(start, position - start);
+
+    Map[thirdPart] = allMembers[firstPart][secondPart][0].getElementValue(secondPart, thirdPart);
+    return Map;
+}
+void jsonArray::addObject(const string arrayMasterKey, map<string, string> object){
+    jsonObject jsonObjectInstance;
+    int number = 0;
+    for(const auto& pair : allMembers[arrayMasterKey]){
+        if (number < std::stoi(pair.first))
+        {
+            number = std::stoi(pair.first);
+        }
+    }
+    number ++;
+    
+    for(const auto& pair : object){
+        jsonObjectInstance.setElement(std::to_string(number) ,pair.first, pair.second);
+    }
+
+    allMembers[arrayMasterKey][std::to_string(number)].push_back(jsonObjectInstance);
+}
 bool jsonArray::containsElement (const string path){
     string firstKey;
     string secondKey;
@@ -223,6 +289,39 @@ void jsonArray::deleteElement(const string firstKey, const string secondKey, con
     allMembers[firstKey][secondKey][0].deleteElement(secondKey, thirdKey);
 }
 
+void jsonArray::deleteObject(const string firstKey, const string secondKey){
+    allMembers[firstKey].erase(secondKey);
+}
+
+void jsonArray::deleteElement(const string path){
+    string firstPart;
+    string secondPart;
+    string thirdPart;
+
+    size_t position = 0;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    
+    firstPart = path.substr(0, position);
+
+    position ++;
+    size_t start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    secondPart = path.substr(start, position - start);
+    position ++;
+
+    start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    thirdPart = path.substr(start, position - start);
+
+    deleteElement(firstPart, secondPart, thirdPart);
+}
+
 bool jsonArray::checkIfArrayExists(const string key){
     for (size_t i = 0; i < keys.size(); i++)
     {
@@ -239,4 +338,23 @@ void jsonArray::clear(){
     simpleElements.clear();
     allMembers.clear();
     jsonObjectInstance.clear();
+}
+
+void jsonArray::saveChanges(string& jsontxt){
+    for(const auto& pair : allMembers){
+        jsontxt += '"' + pair.first + '"' + ':';
+        jsontxt += "[";
+
+        for (auto& deeperPair : allMembers[pair.first])
+        {
+            jsontxt += "{";
+
+            deeperPair.second[0].saveChangesForArray(jsontxt);
+
+            jsontxt[jsontxt.rfind(',')] = ' '; 
+            jsontxt += "},";
+        }
+        jsontxt[jsontxt.rfind(',')] = ' '; 
+        jsontxt += "],";
+    }
 }

@@ -305,7 +305,7 @@
         // if (pos >= json.length() - 1) return true;
         
         pos++;
-        validateValue(json, pos);
+        return validateValue(json, pos);
     }
 
     bool MyController::validate(const std::string& json) {
@@ -401,10 +401,65 @@
                 cout << "Error when trying to move an element: an element with this key already exists within the desired location." << endl;
             }   
         }
-        else if(objects.containsElement(from)){
-
+        else if(from.find('/') == std::string::npos){
+            if(objects.checkIfObjectExists(from)){
+                if (to.find('/') != std::string::npos)
+                {
+                    cout << "You are trying to move the object inside another object/key-value pair which is a not supported feature" << endl;
+                }
+                else {
+                    arrays.addObject(to, objects.getObject(from));
+                    objects.deleteWholeObject(from);
+                }
+            }
         }
-        
+        else{
+            if (objects.containsElement(from))
+            {
+                if (to == "origin")
+                {
+                    simplePairs.addPairs(objects.getObjectByPath(from).begin()->first, objects.getObjectByPath(from)[objects.getObjectByPath(from).begin()->first]);
+                    objects.deleteElement(from);
+                }
+                else if (arrays.checkIfArrayExists(to.substr(0, to.find("/"))))
+                {
+                    if (!arrays.containsElement(to + "/" + from))
+                    {
+                        arrays.setElement(to, objects.getObjectByPath(from));
+                        objects.deleteElement(from);
+                    }
+                }
+                else if (objects.checkIfObjectExists(to)){
+                    objects.setElement(to, from.substr(from.find("/") + 1, from.length()), objects.getElementValue( from.substr(0, from.find("/")), from.substr(from.find("/") + 1, from.length())));
+                    objects.deleteElement(from);
+                }
+            }
+            else if(arrays.containsElement(from)){
+                if (to == "origin")
+                {
+                    simplePairs.addPairs(arrays.getElement(from).begin()->first, arrays.getElement(from)[arrays.getElement(from).begin()->first]);
+                    arrays.deleteElement(from);
+                }
+                else if (arrays.checkIfArrayExists(to.substr(0, to.find("/"))))
+                {
+                    if (!arrays.containsElement(to + "/" + from))
+                    {
+                        arrays.setElement(to, arrays.getElement(from));
+                        arrays.deleteElement(from);
+                    }
+                }
+                else if (objects.checkIfObjectExists(to)){
+                    objects.setElement(to, arrays.getElement(from));
+                    arrays.deleteElement(from);
+                }
+
+                else cout << "Object not found" << endl;          
+            }
+            else{
+                cout << "Object not found" << endl;
+            }
+        }
+
     }
 
     void MyController::deleteElement(const string path, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays){
@@ -434,14 +489,18 @@
                 }
                 firstKey = path.substr(0, position);
                 position ++;
-                
-                size_t start = position;
-                while (position < path.length() && path[position] != '/') {
-                        position++;
-                }
-                secondKey = path.substr(start, position - start);
+                if(position <= path.length() && path[position]){
+                    size_t start = position;
+                    while (position < path.length() && path[position] != '/') {
+                            position++;
+                    }
+                    secondKey = path.substr(start, position - start);
 
-                objects.deleteElement(firstKey, secondKey);
+                    objects.deleteElement(firstKey, secondKey);
+                }
+                else {
+                    objects.deleteWholeObject(firstKey);
+                }
             }
             else if (arrays.containsElement(path)){
                 string firstKey;
@@ -455,20 +514,29 @@
                 }
                 firstKey = path.substr(0, position);
                 position ++;
-                
-                size_t start = position;
-                while (position < path.length() && path[position] != '/') {
-                        position++;
+                if(position <= path.length() && path[position]){
+                    size_t start = position;
+                    while (position < path.length() && path[position] != '/') {
+                            position++;
+                    }
+                    secondKey = path.substr(start, position - start);
+                    position ++;
+                    
+                    if(position <= path.length() && path[position]){
+                        start = position;
+                        while (position < path.length() && path[position] != '/') {
+                                position++;
+                        }
+                        thirdKey = path.substr(start, position - start);
+                        arrays.deleteElement(firstKey, secondKey, thirdKey);
+                    }
+                    else {
+                        arrays.deleteObject(firstKey, secondKey);
+                    }
                 }
-                secondKey = path.substr(start, position - start);
-                position ++;
-
-                start = position;
-                while (position < path.length() && path[position] != '/') {
-                        position++;
+                else {
+                    arrays.deleteWholeArray(firstKey);
                 }
-                thirdKey = path.substr(start, position - start);
-                arrays.deleteElement(firstKey, secondKey, thirdKey);
             }
             else {
                 cout <<"Element not found" << endl;
@@ -568,4 +636,13 @@
             std::transform(separatedWord.begin(), separatedWord.end(), separatedWord.begin(), ::tolower);
         }
         
+    }
+
+    void MyController::saveChanges(string& jsontxt, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray){
+        jsontxt += '{';
+        pairs.saveChanges(jsontxt);
+        jsonObject.saveChanges(jsontxt);
+        jsonArray.saveChanges(jsontxt);
+        jsontxt[jsontxt.rfind(',')] = ' ';
+        jsontxt += '}';
     }

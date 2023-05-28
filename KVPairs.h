@@ -39,16 +39,8 @@ class KVPairs : public Parser{
         string getElementAt(const string path);
 
         void clear();
-    public:
-        // KVPairs();
-
-        // KVPairs(string key, string value);
-
-        // KVPairs(const KVPairs& other) = delete;
-        // KVPairs(KVPairs&& other) = delete;
-
-        // KVPairs& operator=(const KVPairs& other) = delete;
-        // KVPairs& operator=(KVPairs&& other) = delete;
+        
+        void saveChanges(string& jsontxt);
 
 };
 #endif

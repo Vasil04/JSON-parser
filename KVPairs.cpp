@@ -87,11 +87,10 @@
         keys.clear();
     }
 
-    // KVPairs::KVPairs(){
-        
-    // }
-
-    // KVPairs::KVPairs(string key, string value){
-    //     addPairs(key, value);
-    // }
+    void KVPairs::saveChanges(string& jsontxt){
+        for (const auto& pair : simplePairs)
+        {
+            jsontxt += '"' + pair.first + '"' + ':' + '"' + pair.second + '"' + ',' + ' ';
+        }
+    }
 

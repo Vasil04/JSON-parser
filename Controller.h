@@ -29,5 +29,6 @@ namespace MyController{
     void separateWord(const string originWord, string& separatedWord, size_t& position);
     void clear(KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
     void parseData(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray);
+    void saveChanges(string& jsontxt, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray);
 }
 #endif
