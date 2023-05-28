@@ -27,11 +27,17 @@ class jsonObject : public Parser{
 
     map<string, map<string, string>> getObjects ();
 
+    bool checkIfObjectExists (const string key);
+
     void searchByKey (string key);
 
     bool containsElement (const string path);
 
     void setElement (const string masterKey, const string key, const string newValue);
+
+    void deleteWholeObject(const string name);
+
+    void deleteElement(const string firstKey, const string secondKey);
 
     void clear();
 

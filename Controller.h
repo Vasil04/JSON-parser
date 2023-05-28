@@ -6,6 +6,7 @@
 #include <cctype>
 #include <string>
 #include <fstream>
+#include <algorithm>
 #include "jsonArray.h"
 
 namespace MyController{
@@ -23,9 +24,10 @@ namespace MyController{
     void searchKey(const string key, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays); //done
     void set(const string path, const string newValue, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
     void create(const string path, const string value, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
-    void deleteElement(const string path);
-    void move(const string from, const string to);
-
+    void deleteElement(const string path, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
+    void move(const string from, const string to, KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
+    void separateWord(const string originWord, string& separatedWord, size_t& position);
+    void clear(KVPairs& simplePairs, jsonObject& objects, jsonArray& arrays);
     void parseData(string& json, KVPairs& pairs, jsonObject& jsonObject, jsonArray& jsonArray);
 }
 #endif

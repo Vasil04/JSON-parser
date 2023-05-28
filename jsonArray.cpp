@@ -116,10 +116,31 @@ void jsonArray::setElement (const string firstKey, const string masterKey, const
     allMembers[firstKey][masterKey][0].setElement(masterKey, secondKey, newValue);
 }
 
-bool jsonArray::containsElement (const string path){
+void jsonArray::setElement (const string firstKey, const string secondKey, const string newValue){
+    string firstPart;
+    string secondPart;
 
+    size_t position = 0;
+    while (position < firstKey.length() && firstKey[position] != '/') {
+            position++;
+    }
+    
+    firstPart = firstKey.substr(0, position);
+    // cout << firstKey << "hello" << endl;
+    position ++;
+    size_t start = position;
+    while (position < firstKey.length() && firstKey[position] != '/') {
+            position++;
+    }
+    secondPart = firstKey.substr(start, position - start);
+
+    allMembers[firstPart][secondPart][0].setElement(secondPart, secondKey, newValue);
+}
+
+bool jsonArray::containsElement (const string path){
     string firstKey;
     string secondKey;
+    string thirdKey = "";
     size_t position = 0;
 
     while (position < path.length() && path[position] != '/') {
@@ -134,6 +155,16 @@ bool jsonArray::containsElement (const string path){
     }
     secondKey = path.substr(start, position - start);
 
+    position ++;
+
+    start = position;
+    while (position < path.length() && path[position] != '/') {
+            position++;
+    }
+    if (position <= path.length()) 
+    {   
+       thirdKey = path.substr(start, position - start);
+    }
     // for(const auto&pair : allSimplePairs){
     //     if(pair.first == firstKey){
     //         for (int i = 0; i < allSimplePairs[pair.first].size(); i++)
@@ -144,22 +175,52 @@ bool jsonArray::containsElement (const string path){
     //         }   
     //     }    
     // }
-    
-    for (size_t i = 0; i < keys.size(); i++)
-    {
-        if (keys[i] == firstKey)
+    if(thirdKey != ""){
+        for (size_t i = 0; i < keys.size(); i++)
         {
-            for( auto&pair : allMembers[firstKey]){
-                if (pair.second[0].containsElement(secondKey))
+            if (keys[i] == firstKey)
+            {
+                string concated = secondKey + "/" + thirdKey;
+                if (allMembers[firstKey][secondKey][0].containsElement(concated))
                 {
                     return true;
+                }   
+            }
+        }
+    }
+    else {
+        for (size_t i = 0; i < keys.size(); i++)
+        {
+            if (keys[i] == firstKey)
+            {
+                for(const auto&pair : allMembers[firstKey]){
+                    if (pair.first == secondKey)
+                    {
+                        return true;
+                    }
+                    
                 }
-            }    
+            }
         }
     }
 
     return false;
     
+}
+
+void jsonArray::deleteWholeArray(const string name){
+    allMembers.erase(name);
+    for (size_t i = 0; i < keys.size(); i++)
+    {
+        if (keys[i] == name)
+        {
+            keys.erase(keys.begin() + i);
+        }
+    }
+}
+
+void jsonArray::deleteElement(const string firstKey, const string secondKey, const string thirdKey){
+    allMembers[firstKey][secondKey][0].deleteElement(secondKey, thirdKey);
 }
 
 bool jsonArray::checkIfArrayExists(const string key){
@@ -172,4 +233,10 @@ bool jsonArray::checkIfArrayExists(const string key){
         
     }
     return false;
+}
+void jsonArray::clear(){
+    keys.clear();
+    simpleElements.clear();
+    allMembers.clear();
+    jsonObjectInstance.clear();
 }

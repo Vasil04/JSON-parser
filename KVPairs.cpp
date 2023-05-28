@@ -3,16 +3,30 @@
 
     void KVPairs::addPairs (string key, string value){
         simplePairs[key] = value;
+        bool doesExist = false;
+        for (size_t i = 0; i < keys.size(); i++)
+        {
+            if (keys[i] == key)
+            {
+                doesExist = true;
+            }
+            
+        }
+        if (!doesExist)
+        {
+            keys.push_back(key);
+        }        
+        
     }
 
     void KVPairs::printPair (string key){
-        for(int i = 0; i < keys.size(); i++){
-            if (key == keys[i])
-            {
+        // for(int i = 0; i < keys.size(); i++){
+        //     if (key == keys[i])
+        //     {
                 cout << simplePairs[key] << endl;
-                break;
-            }
-        }
+        //         break;
+        //     }
+        // }
     }
 
     bool KVPairs::containsElement(const string key){
@@ -43,6 +57,14 @@
         }
     }
 
+    string KVPairs::getElementAt(const string path){
+        return simplePairs[path];
+    }
+
+    void KVPairs::deleteElement (const string key){
+        simplePairs.erase(key);
+    }
+
     map<string, string> KVPairs::getSimplePairs () {
         return simplePairs;
     }
@@ -62,6 +84,7 @@
 
     void KVPairs::clear(){
         simplePairs.clear();
+        keys.clear();
     }
 
     // KVPairs::KVPairs(){

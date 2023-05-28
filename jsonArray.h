@@ -35,7 +35,11 @@ class jsonArray : public Parser{
     void searchByKey (string key);
     bool containsElement (const string path);
     void setElement (const string firstKey, const string masterKey, const string secondKey, const string newValue);
+    void setElement (const string firstKey, const string secondKey, const string newValue);
     bool checkIfArrayExists(const string key);
+    void deleteWholeArray(const string name);
+    void deleteElement(const string firstKey, const string secondKey, const string thirdKey);
+    void clear();
 
     public:
     jsonArray();

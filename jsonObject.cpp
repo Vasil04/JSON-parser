@@ -66,10 +66,28 @@
     void jsonObject::clear(){
         simplePairs.clear();
         allObjects.clear();
+        key = " ";
     }
 
     void jsonObject::setElement (const string masterKey, const string key, const string newValue){
         allObjects[masterKey][key] = newValue;
+    }
+
+    bool jsonObject::checkIfObjectExists(const string key){
+        for(const auto& pair : allObjects){
+            if(pair.first == key){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void jsonObject::deleteWholeObject(const string name){
+        allObjects.erase(name);
+    }
+
+    void jsonObject::deleteElement(const string firstKey, const string secondKey){
+        allObjects[firstKey].erase(secondKey);
     }
 
     bool jsonObject::containsElement (const string path) {

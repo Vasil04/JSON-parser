@@ -34,6 +34,10 @@ class KVPairs : public Parser{
 
         void parseData(string& jsonTXT, const string key, size_t& position) override;
 
+        void deleteElement (const string key);
+
+        string getElementAt(const string path);
+
         void clear();
     public:
         // KVPairs();
