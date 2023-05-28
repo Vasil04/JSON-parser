@@ -1,0 +1,85 @@
+\hypertarget{namespace_my_controller}{}\doxysection{My\+Controller Namespace Reference}
+\label{namespace_my_controller}\index{MyController@{MyController}}
+
+
+This namespace holds the functions that the main file needs to execute the tasks. Here are all of the functions that are used in the execution of the program, some of them are user related, and the rest are needed for running other functions.  
+
+
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{namespace_my_controller_aadb8b463438c8915084207a6dc46a0e1}\label{namespace_my_controller_aadb8b463438c8915084207a6dc46a0e1}} 
+void {\bfseries skip\+Whitespace} (const std\+::string \&json, size\+\_\+t \&pos)
+\begin{DoxyCompactList}\small\item\em skipps the empty spaces in a string This function skipps the empty spaces in a string by being passed the string itself and the current position in the string. The current position changes inside the fucntion and since it\textquotesingle{}s passed by a reference it also changes inside the fucntion where skip\+Whitespace is called. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a3a7129849e79610f788bc4a91096060c}\label{namespace_my_controller_a3a7129849e79610f788bc4a91096060c}} 
+bool {\bfseries validate\+Key} (const std\+::string \&json, size\+\_\+t \&pos)
+\begin{DoxyCompactList}\small\item\em This function checks the key(explained in the validate\+Value). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{namespace_my_controller_a389364fad6a61f34d8b4e2d8c6eb90e4}{validate\+Object}} (const std\+::string \&json, size\+\_\+t \&pos)
+\item 
+bool \mbox{\hyperlink{namespace_my_controller_a33f6b763274942b3cfddece706525fe3}{validate\+Array}} (const std\+::string \&json, size\+\_\+t \&pos)
+\item 
+bool \mbox{\hyperlink{namespace_my_controller_a2178bcfd81fc546536908b37225cda1d}{validate\+Value}} (const std\+::string \&json, size\+\_\+t \&pos)
+\item 
+bool \mbox{\hyperlink{namespace_my_controller_a65192e93990f158bc7b08dd90e3ead28}{validate}} (const std\+::string \&json)
+\item 
+\mbox{\Hypertarget{namespace_my_controller_ab5672a448b932cba5983c4da3f9d7a0f}\label{namespace_my_controller_ab5672a448b932cba5983c4da3f9d7a0f}} 
+void {\bfseries print} (\mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em this function prints all collected data by calling class specific functions \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a206cedf9776fc4721e398682dadb7707}\label{namespace_my_controller_a206cedf9776fc4721e398682dadb7707}} 
+void {\bfseries search\+Key} (const string key, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em this function searches all elements starting with a keyword by calling class specific functions All elements starting with the keyword are found and printed \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a291e2a80dbc1ac4d9bbdc36f728423cd}\label{namespace_my_controller_a291e2a80dbc1ac4d9bbdc36f728423cd}} 
+void {\bfseries set} (const string path, const string new\+Value, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em This function checks if such element exist and changes it\textquotesingle{}s value by calling class specific functions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a74a73797babc254e6a639367f9659c0d}\label{namespace_my_controller_a74a73797babc254e6a639367f9659c0d}} 
+void {\bfseries create} (const string path, const string value, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em This function checks if the provided path leads to the inside of an existing element and if so creates the wanted element by calling class specific functions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a606621cb47531ed98bf739a1a7b808e8}\label{namespace_my_controller_a606621cb47531ed98bf739a1a7b808e8}} 
+void {\bfseries delete\+Element} (const string path, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em This function checks if such element exist and deletes it\textquotesingle{}s value by calling class specific functions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a3458c9ed1fa880a0d1e166c1f1e414d9}\label{namespace_my_controller_a3458c9ed1fa880a0d1e166c1f1e414d9}} 
+void {\bfseries move} (const string from, const string to, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em This function checks if such element exist and moves it\textquotesingle{}s value(deletes it in one place and creates it in other) by calling class specific functions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_ae61ea48c76f1f815c0c8c59772bc3eed}\label{namespace_my_controller_ae61ea48c76f1f815c0c8c59772bc3eed}} 
+void {\bfseries separate\+Word} (const string origin\+Word, string \&separated\+Word, size\+\_\+t \&position)
+\begin{DoxyCompactList}\small\item\em This function separates user input into words so that other functions can use them separately. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a82ea509819b928f0bea93f6b296e9391}\label{namespace_my_controller_a82ea509819b928f0bea93f6b296e9391}} 
+void {\bfseries clear} (\mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&simple\+Pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&objects, \mbox{\hyperlink{classjson_array}{json\+Array}} \&arrays)
+\begin{DoxyCompactList}\small\item\em This function clears all json elements. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a8030564cae34cc57b68f8faa36b4c887}\label{namespace_my_controller_a8030564cae34cc57b68f8faa36b4c887}} 
+void {\bfseries parse\+Data} (string \&json, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&\mbox{\hyperlink{classjson_object}{json\+Object}}, \mbox{\hyperlink{classjson_array}{json\+Array}} \&\mbox{\hyperlink{classjson_array}{json\+Array}})
+\begin{DoxyCompactList}\small\item\em This function is used to extract the data and save it into the class objects created for this purpose (is called after validate) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{namespace_my_controller_a3f870f6b2a88aa68f9c0293acec9bcbf}\label{namespace_my_controller_a3f870f6b2a88aa68f9c0293acec9bcbf}} 
+void {\bfseries save\+Changes} (string \&jsontxt, \mbox{\hyperlink{class_k_v_pairs}{KVPairs}} \&pairs, \mbox{\hyperlink{classjson_object}{json\+Object}} \&\mbox{\hyperlink{classjson_object}{json\+Object}}, \mbox{\hyperlink{classjson_array}{json\+Array}} \&\mbox{\hyperlink{classjson_array}{json\+Array}})
+\begin{DoxyCompactList}\small\item\em This function exports all changes into a string by calling class specific functions. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This namespace holds the functions that the main file needs to execute the tasks. Here are all of the functions that are used in the execution of the program, some of them are user related, and the rest are needed for running other functions. 
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{namespace_my_controller_a65192e93990f158bc7b08dd90e3ead28}\label{namespace_my_controller_a65192e93990f158bc7b08dd90e3ead28}} 
+\index{MyController@{MyController}!validate@{validate}}
+\index{validate@{validate}!MyController@{MyController}}
+\doxysubsubsection{\texorpdfstring{validate()}{validate()}}
+{\footnotesize\ttfamily bool My\+Controller\+::validate (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{json }\end{DoxyParamCaption})}
+
+This is the head validating function, it operates by calling sub-\/functions and returning the result from them; \mbox{\Hypertarget{namespace_my_controller_a33f6b763274942b3cfddece706525fe3}\label{namespace_my_controller_a33f6b763274942b3cfddece706525fe3}} 
+\index{MyController@{MyController}!validateArray@{validateArray}}
+\index{validateArray@{validateArray}!MyController@{MyController}}
+\doxysubsubsection{\texorpdfstring{validateArray()}{validateArray()}}
+{\footnotesize\ttfamily bool My\+Controller\+::validate\+Array (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{json,  }\item[{size\+\_\+t \&}]{pos }\end{DoxyParamCaption})}
+
+This is the function responsible for checking whether the value is valid or no when it is an array. First it checks if the value begins with a square bracket and if that is correct it calls validate\+Value to check the inside. At last it checks if the array is closed properly \mbox{\Hypertarget{namespace_my_controller_a389364fad6a61f34d8b4e2d8c6eb90e4}\label{namespace_my_controller_a389364fad6a61f34d8b4e2d8c6eb90e4}} 
+\index{MyController@{MyController}!validateObject@{validateObject}}
+\index{validateObject@{validateObject}!MyController@{MyController}}
+\doxysubsubsection{\texorpdfstring{validateObject()}{validateObject()}}
+{\footnotesize\ttfamily bool My\+Controller\+::validate\+Object (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{json,  }\item[{size\+\_\+t \&}]{pos }\end{DoxyParamCaption})}
+
+This is the function responsible for checking whether the value is valid or no when it is an object. First it checks if the value begins with a curly bracket and if that is correct it calls validate\+Value to check the inside. At last it checks if the object is closed properly \mbox{\Hypertarget{namespace_my_controller_a2178bcfd81fc546536908b37225cda1d}\label{namespace_my_controller_a2178bcfd81fc546536908b37225cda1d}} 
+\index{MyController@{MyController}!validateValue@{validateValue}}
+\index{validateValue@{validateValue}!MyController@{MyController}}
+\doxysubsubsection{\texorpdfstring{validateValue()}{validateValue()}}
+{\footnotesize\ttfamily bool My\+Controller\+::validate\+Value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{json,  }\item[{size\+\_\+t \&}]{pos }\end{DoxyParamCaption})}
+
+This function is responsible for checking the keys and values of the elements (the values are checked through recursion) in the json file. Since the values can be plain text, arrays and objects the validate\+Value has a case for every one of those situations. First the key is checked. It has to be surrounded by quotes and followed by \textquotesingle{}\+:\textquotesingle{}. Then if the value is plain text it checks if it\textquotesingle{}s surrounded by quotes and if it is not the last element before the file end, the value should be followed by a comma. If the value is an object or an array it calls the corresponding functions; 

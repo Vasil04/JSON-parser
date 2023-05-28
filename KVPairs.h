@@ -9,8 +9,6 @@
 #include <vector>
 #include "Parser.hpp"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
-
 
 class KVPairs : public Parser{
 

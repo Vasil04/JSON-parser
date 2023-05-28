@@ -1,16 +1,7 @@
 #ifndef JSONOBJECT_H
 #define JSONOBJECT_H
 
-#include <iostream>
-#include <string>
-#include <fstream>
-#include <cctype>
-#include <map>
-// #include "Parser.hpp"
 #include "KVPairs.h"
-
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::endl;
-
 
 class jsonObject : public Parser{
     
@@ -52,13 +43,5 @@ class jsonObject : public Parser{
 
     void clear();
 
-    public:
-    // jsonObject();
-
-    // jsonObject(const jsonObject& other) = delete;
-    // jsonObject(jsonObject&& other) = delete;
-
-    // jsonObject& operator=(const jsonObject& other) = delete;
-    // jsonObject& operator=(jsonObject&& other) = delete;
 };
 #endif

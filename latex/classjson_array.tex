@@ -1,0 +1,92 @@
+\hypertarget{classjson_array}{}\doxysection{json\+Array Class Reference}
+\label{classjson_array}\index{jsonArray@{jsonArray}}
+Inheritance diagram for json\+Array\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjson_array}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classjson_array_a69aee6c984ad6aa5c9de33c2c3800955}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position) override
+\begin{DoxyCompactList}\small\item\em This function is called to extract array data into the array container. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_a09887f43aa01590d8582712d9f2f3255}\label{classjson_array_a09887f43aa01590d8582712d9f2f3255}} 
+void {\bfseries print\+All\+Data} ()
+\begin{DoxyCompactList}\small\item\em This function is called to print all array data. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_aef37795aad73f3cab0321d85713a71bf}\label{classjson_array_aef37795aad73f3cab0321d85713a71bf}} 
+void {\bfseries search\+By\+Key} (string key)
+\begin{DoxyCompactList}\small\item\em This function is used to find a specific array. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_aeb470de14b2259c6ccd58eecfbd9b5da}\label{classjson_array_aeb470de14b2259c6ccd58eecfbd9b5da}} 
+bool {\bfseries contains\+Element} (const string path)
+\begin{DoxyCompactList}\small\item\em This function is used to see if an array contains the wanted element. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_ae3304f57304afd8eb3f609312d9d99ec}\label{classjson_array_ae3304f57304afd8eb3f609312d9d99ec}} 
+void {\bfseries set\+Element} (const string first\+Key, const string master\+Key, const string second\+Key, const string new\+Value)
+\begin{DoxyCompactList}\small\item\em This function sets an element by specific params. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_a59bc4d522214b399b8da5afc00266a72}\label{classjson_array_a59bc4d522214b399b8da5afc00266a72}} 
+void {\bfseries set\+Element} (const string first\+Key, const string second\+Key, const string new\+Value)
+\begin{DoxyCompactList}\small\item\em This function sets an element by different specific params. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_aa9a6ddee4698daf78aa87e07689729fa}\label{classjson_array_aa9a6ddee4698daf78aa87e07689729fa}} 
+void {\bfseries set\+Element} (const string path, map$<$ string, string $>$ element)
+\begin{DoxyCompactList}\small\item\em This function sets an element by different specific params. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_a7781be4a7c52220c3e800c471e1539ee}\label{classjson_array_a7781be4a7c52220c3e800c471e1539ee}} 
+map$<$ string, string $>$ {\bfseries get\+Element} (const string path)
+\begin{DoxyCompactList}\small\item\em This function returns an element. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classjson_array_a36e29e0eb3dabca0395993a29ca40394}\label{classjson_array_a36e29e0eb3dabca0395993a29ca40394}} 
+void {\bfseries add\+Object} (const string array\+Master\+Key, map$<$ string, string $>$ object)
+\item 
+\mbox{\Hypertarget{classjson_array_ade38f5962311cf0e10d85a8e52a059d3}\label{classjson_array_ade38f5962311cf0e10d85a8e52a059d3}} 
+bool {\bfseries check\+If\+Array\+Exists} (const string key)
+\item 
+\mbox{\Hypertarget{classjson_array_acbe5df033088ff97ce21edcee8c6a6c6}\label{classjson_array_acbe5df033088ff97ce21edcee8c6a6c6}} 
+void {\bfseries delete\+Whole\+Array} (const string name)
+\item 
+\mbox{\Hypertarget{classjson_array_a871d3c48439302b1a77b57adff9d5cfb}\label{classjson_array_a871d3c48439302b1a77b57adff9d5cfb}} 
+void {\bfseries delete\+Element} (const string first\+Key, const string second\+Key, const string third\+Key)
+\item 
+\mbox{\Hypertarget{classjson_array_a9924234e85d896619e1ef10f6c08b7c9}\label{classjson_array_a9924234e85d896619e1ef10f6c08b7c9}} 
+void {\bfseries delete\+Element} (const string path)
+\item 
+\mbox{\Hypertarget{classjson_array_ab2a8654dc507da83ae3d86cdcc417194}\label{classjson_array_ab2a8654dc507da83ae3d86cdcc417194}} 
+void {\bfseries delete\+Object} (const string first\+Key, const string second\+Key)
+\item 
+\mbox{\Hypertarget{classjson_array_a8354de0cf49ac53ae8ffdbee9e100320}\label{classjson_array_a8354de0cf49ac53ae8ffdbee9e100320}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{classjson_array_acb736fdad5af85c5494240589b412b19}\label{classjson_array_acb736fdad5af85c5494240589b412b19}} 
+void {\bfseries save\+Changes} (string \&jsontxt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_parser}{Parser}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}\label{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}} 
+void {\bfseries skip\+White\+Spaces} (const string \&json\+TXT, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}\label{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}} 
+bool {\bfseries starts\+With} (const std\+::string \&str, const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em checks if the provided string starts with the provided key \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classjson_array_a69aee6c984ad6aa5c9de33c2c3800955}\label{classjson_array_a69aee6c984ad6aa5c9de33c2c3800955}} 
+\index{jsonArray@{jsonArray}!parseData@{parseData}}
+\index{parseData@{parseData}!jsonArray@{jsonArray}}
+\doxysubsubsection{\texorpdfstring{parseData()}{parseData()}}
+{\footnotesize\ttfamily void json\+Array\+::parse\+Data (\begin{DoxyParamCaption}\item[{string \&}]{json\+TXT,  }\item[{const string}]{key,  }\item[{size\+\_\+t \&}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+This function is called to extract array data into the array container. 
+
+
+
+Reimplemented from \mbox{\hyperlink{class_parser}{Parser}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+json\+Array.\+h\item 
+json\+Array.\+cpp\end{DoxyCompactItemize}

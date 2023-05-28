@@ -1,0 +1,73 @@
+\hypertarget{class_k_v_pairs}{}\doxysection{KVPairs Class Reference}
+\label{class_k_v_pairs}\index{KVPairs@{KVPairs}}
+Inheritance diagram for KVPairs\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_k_v_pairs}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a5474060798daf28abc2c82dd24321e04}\label{class_k_v_pairs_a5474060798daf28abc2c82dd24321e04}} 
+void {\bfseries add\+Pairs} (string key, string value)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_ab5c159254a756f14f4725808f65f9174}\label{class_k_v_pairs_ab5c159254a756f14f4725808f65f9174}} 
+void {\bfseries print\+Pair} (string key)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a95773fc2a9157dead4a81b11bc212f0c}\label{class_k_v_pairs_a95773fc2a9157dead4a81b11bc212f0c}} 
+void {\bfseries search\+By\+Key} (string key)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a81fc09bbaf82b8f65ebd2f1553707d5c}\label{class_k_v_pairs_a81fc09bbaf82b8f65ebd2f1553707d5c}} 
+bool {\bfseries contains\+Element} (const string key)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a7ee8b49fbb0ed4c694d60686f4813293}\label{class_k_v_pairs_a7ee8b49fbb0ed4c694d60686f4813293}} 
+void {\bfseries print\+All\+Pairs} ()
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a9f8c6622bf1e6f619ffec2a9110ad429}\label{class_k_v_pairs_a9f8c6622bf1e6f619ffec2a9110ad429}} 
+map$<$ string, string $>$ {\bfseries get\+Simple\+Pairs} ()
+\item 
+void \mbox{\hyperlink{class_k_v_pairs_ab0004d50e7d679216076428554806458}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position) override
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_af8700b304ec182cbb643b228ffd3da65}\label{class_k_v_pairs_af8700b304ec182cbb643b228ffd3da65}} 
+void {\bfseries delete\+Element} (const string key)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_a96855f31519c31beddad4185b60d7295}\label{class_k_v_pairs_a96855f31519c31beddad4185b60d7295}} 
+string {\bfseries get\+Element\+At} (const string path)
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_ac6d0bc61b79661bfa7083a52f31c52b0}\label{class_k_v_pairs_ac6d0bc61b79661bfa7083a52f31c52b0}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{class_k_v_pairs_aa0347b31553e5fcc5d0a20000158456b}\label{class_k_v_pairs_aa0347b31553e5fcc5d0a20000158456b}} 
+void {\bfseries save\+Changes} (string \&jsontxt)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_parser}{Parser}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}\label{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}} 
+void {\bfseries skip\+White\+Spaces} (const string \&json\+TXT, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}\label{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}} 
+bool {\bfseries starts\+With} (const std\+::string \&str, const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em checks if the provided string starts with the provided key \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_k_v_pairs_ab0004d50e7d679216076428554806458}\label{class_k_v_pairs_ab0004d50e7d679216076428554806458}} 
+\index{KVPairs@{KVPairs}!parseData@{parseData}}
+\index{parseData@{parseData}!KVPairs@{KVPairs}}
+\doxysubsubsection{\texorpdfstring{parseData()}{parseData()}}
+{\footnotesize\ttfamily void KVPairs\+::parse\+Data (\begin{DoxyParamCaption}\item[{string \&}]{json\+TXT,  }\item[{const string}]{key,  }\item[{size\+\_\+t \&}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_parser}{Parser}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+KVPairs.\+h\item 
+KVPairs.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,91 @@
+\hypertarget{classjson_object}{}\doxysection{json\+Object Class Reference}
+\label{classjson_object}\index{jsonObject@{jsonObject}}
+Inheritance diagram for json\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classjson_object}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classjson_object_a9623fb3aea4e2757faef44f94447516f}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position) override
+\item 
+\mbox{\Hypertarget{classjson_object_a885bc9160041017531c120282d7e22d0}\label{classjson_object_a885bc9160041017531c120282d7e22d0}} 
+void {\bfseries print\+All\+Data} ()
+\item 
+\mbox{\Hypertarget{classjson_object_af15c456fd9233685de167c4caf262eca}\label{classjson_object_af15c456fd9233685de167c4caf262eca}} 
+map$<$ string, map$<$ string, string $>$ $>$ {\bfseries get\+Objects} ()
+\item 
+\mbox{\Hypertarget{classjson_object_a89e8382c13fc791983a6aa8044ed2118}\label{classjson_object_a89e8382c13fc791983a6aa8044ed2118}} 
+map$<$ string, string $>$ {\bfseries get\+Object} (const string key)
+\item 
+\mbox{\Hypertarget{classjson_object_a1716aeb188b518f465280c637e5b5597}\label{classjson_object_a1716aeb188b518f465280c637e5b5597}} 
+map$<$ string, string $>$ {\bfseries get\+Object\+By\+Path} (const string path)
+\item 
+\mbox{\Hypertarget{classjson_object_a7f2ce39efdfbe2a3681188838c3c9ae1}\label{classjson_object_a7f2ce39efdfbe2a3681188838c3c9ae1}} 
+string {\bfseries get\+Element\+Value} (const string master\+Key, const string key)
+\item 
+\mbox{\Hypertarget{classjson_object_a69679395affa3740b08f316d5741e572}\label{classjson_object_a69679395affa3740b08f316d5741e572}} 
+bool {\bfseries check\+If\+Object\+Exists} (const string key)
+\item 
+\mbox{\Hypertarget{classjson_object_a09a3afaeddb25fa0cb54dbfe9ca70033}\label{classjson_object_a09a3afaeddb25fa0cb54dbfe9ca70033}} 
+void {\bfseries search\+By\+Key} (string key)
+\item 
+\mbox{\Hypertarget{classjson_object_a382ec9d428961840e5d30d7cc8951582}\label{classjson_object_a382ec9d428961840e5d30d7cc8951582}} 
+bool {\bfseries contains\+Element} (const string path)
+\item 
+\mbox{\Hypertarget{classjson_object_a4500951e5c753c3c155c165a5fa126df}\label{classjson_object_a4500951e5c753c3c155c165a5fa126df}} 
+void {\bfseries set\+Element} (const string master\+Key, const string key, const string new\+Value)
+\item 
+\mbox{\Hypertarget{classjson_object_a81c6f6a14d39078cced95a3868290b65}\label{classjson_object_a81c6f6a14d39078cced95a3868290b65}} 
+void {\bfseries set\+Element} (const string master\+Key, map$<$ string, string $>$ Map)
+\item 
+\mbox{\Hypertarget{classjson_object_a189001952d0748037233af0a61bc4c6c}\label{classjson_object_a189001952d0748037233af0a61bc4c6c}} 
+void {\bfseries save\+Changes} (string \&jsontxt)
+\item 
+\mbox{\Hypertarget{classjson_object_af17948b2c593387aedb74672a83e8b4b}\label{classjson_object_af17948b2c593387aedb74672a83e8b4b}} 
+void {\bfseries save\+Changes\+For\+Array} (string \&jsontxt)
+\item 
+\mbox{\Hypertarget{classjson_object_a6ecb72debbe7f6f034b68cab1c19bd34}\label{classjson_object_a6ecb72debbe7f6f034b68cab1c19bd34}} 
+void {\bfseries delete\+Whole\+Object} (const string name)
+\item 
+\mbox{\Hypertarget{classjson_object_ac6c754892ed8f7b2103776d3cdc8f52d}\label{classjson_object_ac6c754892ed8f7b2103776d3cdc8f52d}} 
+void {\bfseries delete\+Element} (const string first\+Key, const string second\+Key)
+\item 
+\mbox{\Hypertarget{classjson_object_a598c49737dff3a724dcef166be96d0a7}\label{classjson_object_a598c49737dff3a724dcef166be96d0a7}} 
+void {\bfseries delete\+Element} (const string path)
+\item 
+\mbox{\Hypertarget{classjson_object_a6b4bf1584c68a6697d9312be361dd9a2}\label{classjson_object_a6b4bf1584c68a6697d9312be361dd9a2}} 
+void {\bfseries clear} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_parser}{Parser}}}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}\label{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}} 
+void {\bfseries skip\+White\+Spaces} (const string \&json\+TXT, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}\label{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}} 
+bool {\bfseries starts\+With} (const std\+::string \&str, const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em checks if the provided string starts with the provided key \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classjson_object_a9623fb3aea4e2757faef44f94447516f}\label{classjson_object_a9623fb3aea4e2757faef44f94447516f}} 
+\index{jsonObject@{jsonObject}!parseData@{parseData}}
+\index{parseData@{parseData}!jsonObject@{jsonObject}}
+\doxysubsubsection{\texorpdfstring{parseData()}{parseData()}}
+{\footnotesize\ttfamily void json\+Object\+::parse\+Data (\begin{DoxyParamCaption}\item[{string \&}]{json\+TXT,  }\item[{const string}]{key,  }\item[{size\+\_\+t \&}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_parser}{Parser}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+json\+Object.\+h\item 
+json\+Object.\+cpp\end{DoxyCompactItemize}

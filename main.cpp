@@ -1,14 +1,7 @@
-#include <iostream>
-#include <string>
-#include <cctype>
 #include <map>
-#include <fstream>
-#include "KVPairs.h"
 #include "Controller.h"
-#include "jsonObject.h"
-#include "jsonArray.h"
 
-using std::string, std::cin, std::cout, std::map, std::ifstream, std::ofstream, std::ofstream, std::endl, std::getline;
+using std::ofstream, std::getline;
 using namespace MyController;
 
 int main(){
@@ -25,6 +18,9 @@ int main(){
 
     size_t counter = 0;
 
+    /**
+     * @brief holds info on whether a file has been opened successfully or not.
+    */
     bool openCalled = false;
 
     ifstream file;
@@ -37,6 +33,9 @@ int main(){
     getline(cin, userInput);
     separateWord(userInput, firstWord, counter);
 
+    /**
+     *@brief this is the loop that runs the program. 
+    */
     while (firstWord != "exit")
     {
         if(firstWord == "help"){
@@ -207,46 +206,5 @@ int main(){
         getline(cin, userInput);
         separateWord(userInput, firstWord, counter);
     }
-    
-
-    //to be put under "open"
-    
-
-    //to be put under close:
-
-    //valdiation of the text;
-
-    //save as, and save will be the same but instead of some name given by a string it will be the default file name
-    if (false)
-    {
-        ofstream outputFile("some name");
-        outputFile << jsonTXT;
-    }
-    
-    // some cout to be put here that shows all the features of the app:
-    //....
-
-    //example exit function, to be changed later
-    // if (false){
-    //     return 0;
-    // }
-
-
-    parseData(jsonTXT, tester, jsonObject, jsonArray);
-    // print(tester, jsonObject, jsonArray);
-
-    // searchKey("name", tester, jsonObject, jsonArray);
-
-    // set("offices/name", "works", tester, jsonObject, jsonArray);
-
-    // cout << "///////////////////////////////////////////////";
-
-    // print(tester, jsonObject, jsonArray);
-    
-    // tester.addPairs("secondKey", "secondValue");
-
-    // tester.printPair("firstKey");
-    
-    return 0;
     
 }

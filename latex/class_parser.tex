@@ -1,0 +1,50 @@
+\hypertarget{class_parser}{}\doxysection{Parser Class Reference}
+\label{class_parser}\index{Parser@{Parser}}
+
+
+This class is inherited by all three other classes. This class is inherited by all three other classes because it hold some functions that all other classes have or use. More to be added, currently there are several functions that are the same for two or more classes and they are to be moved here in the future.  
+
+
+
+
+{\ttfamily \#include $<$Parser.\+hpp$>$}
+
+Inheritance diagram for Parser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_parser}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}{parse\+Data}} (string \&json\+TXT, const string key, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}\label{class_parser_a71eac4a4ee97510ebeb705ccca7e7bef}} 
+void {\bfseries skip\+White\+Spaces} (const string \&json\+TXT, size\+\_\+t \&position)
+\item 
+\mbox{\Hypertarget{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}\label{class_parser_ad3b1c2b8d38bc78aa7b87302dcf8a65c}} 
+bool {\bfseries starts\+With} (const std\+::string \&str, const std\+::string \&prefix)
+\begin{DoxyCompactList}\small\item\em checks if the provided string starts with the provided key \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This class is inherited by all three other classes. This class is inherited by all three other classes because it hold some functions that all other classes have or use. More to be added, currently there are several functions that are the same for two or more classes and they are to be moved here in the future. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}\label{class_parser_ac9ecc3c6f35d231ba61cace1fa58f772}} 
+\index{Parser@{Parser}!parseData@{parseData}}
+\index{parseData@{parseData}!Parser@{Parser}}
+\doxysubsubsection{\texorpdfstring{parseData()}{parseData()}}
+{\footnotesize\ttfamily void Parser\+::parse\+Data (\begin{DoxyParamCaption}\item[{string \&}]{json\+TXT,  }\item[{const string}]{key,  }\item[{size\+\_\+t \&}]{position }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented in \mbox{\hyperlink{classjson_array_a69aee6c984ad6aa5c9de33c2c3800955}{json\+Array}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Parser.\+hpp\item 
+Parser.\+cpp\end{DoxyCompactItemize}

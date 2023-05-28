@@ -1,0 +1,45 @@
+\hypertarget{_controller_8h_source}{}\doxysection{Controller.\+h}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ CONTROLLER\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ CONTROLLER\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <algorithm>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}jsonArray.h"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{namespace\ }\mbox{\hyperlink{namespace_my_controller}{MyController}}\{}
+\DoxyCodeLine{00016\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_aadb8b463438c8915084207a6dc46a0e1}{skipWhitespace}}(\textcolor{keyword}{const}\ std::string\&\ json,\ \textcolor{keywordtype}{size\_t}\&\ pos);}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_my_controller_a3a7129849e79610f788bc4a91096060c}{validateKey}}(\textcolor{keyword}{const}\ std::string\&\ json,\ \textcolor{keywordtype}{size\_t}\&\ pos);}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_my_controller_a389364fad6a61f34d8b4e2d8c6eb90e4}{validateObject}}(\textcolor{keyword}{const}\ std::string\&\ json,\ \textcolor{keywordtype}{size\_t}\&\ pos);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_my_controller_a33f6b763274942b3cfddece706525fe3}{validateArray}}(\textcolor{keyword}{const}\ std::string\&\ json,\ \textcolor{keywordtype}{size\_t}\&\ pos);}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_my_controller_a2178bcfd81fc546536908b37225cda1d}{validateValue}}(\textcolor{keyword}{const}\ std::string\&\ json,\ \textcolor{keywordtype}{size\_t}\&\ pos);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{namespace_my_controller_a65192e93990f158bc7b08dd90e3ead28}{validate}}(\textcolor{keyword}{const}\ std::string\&\ json);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_ab5672a448b932cba5983c4da3f9d7a0f}{print}}(\mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a206cedf9776fc4721e398682dadb7707}{searchKey}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ key,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a291e2a80dbc1ac4d9bbdc36f728423cd}{set}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ newValue,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a74a73797babc254e6a639367f9659c0d}{create}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ path,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ value,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a606621cb47531ed98bf739a1a7b808e8}{deleteElement}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ path,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a3458c9ed1fa880a0d1e166c1f1e414d9}{move}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ from,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ to,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_ae61ea48c76f1f815c0c8c59772bc3eed}{separateWord}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{string}\ originWord,\ \textcolor{keywordtype}{string}\&\ separatedWord,\ \textcolor{keywordtype}{size\_t}\&\ position);}
+\DoxyCodeLine{00085\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a82ea509819b928f0bea93f6b296e9391}{clear}}(\mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ simplePairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ objects,\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ arrays);}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a8030564cae34cc57b68f8faa36b4c887}{parseData}}(\textcolor{keywordtype}{string}\&\ json,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ pairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ \mbox{\hyperlink{classjson_object}{jsonObject}},\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ \mbox{\hyperlink{classjson_array}{jsonArray}});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{namespace_my_controller_a3f870f6b2a88aa68f9c0293acec9bcbf}{saveChanges}}(\textcolor{keywordtype}{string}\&\ jsontxt,\ \mbox{\hyperlink{class_k_v_pairs}{KVPairs}}\&\ pairs,\ \mbox{\hyperlink{classjson_object}{jsonObject}}\&\ \mbox{\hyperlink{classjson_object}{jsonObject}},\ \mbox{\hyperlink{classjson_array}{jsonArray}}\&\ \mbox{\hyperlink{classjson_array}{jsonArray}});}
+\DoxyCodeLine{00100\ \}}
+\DoxyCodeLine{00101\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

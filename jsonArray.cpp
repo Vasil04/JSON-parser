@@ -1,9 +1,5 @@
 #include "jsonArray.h"
 
-jsonArray::jsonArray(){
-     
-}
-
 void jsonArray::parseData(string& jsonTXT, const string key, size_t& position){
     size_t counter = 0;
     size_t valueStart;

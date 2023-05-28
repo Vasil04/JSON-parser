@@ -75,8 +75,6 @@
             pos++;
         }
     }
-
-    bool MyController::validateValue(const std::string& json, size_t& pos);
     
     bool MyController::validateKey(const std::string& json, size_t& pos){
         if (json[pos] == '"') {
@@ -111,12 +109,6 @@
     }
 
     bool MyController::validateObject(const std::string& json, size_t& pos) {
-        // skipWhitespace(json, pos);
-
-        // if (json[pos] != '{') {
-        //     std::cout << "Invalid JSON: Expected '{' at position " << pos << std::endl;
-        //     return false;
-        // }//useless
 
         pos++; // Skip '{'
 
@@ -129,19 +121,16 @@
 
         while (pos < json.length()) {
 
-            // if(!validateKey(json, pos)) return false;
 
             if (!validateValue(json, pos)) {
                 return false;
-            }//validate key first or perhaps validate
+            }
 
             skipWhitespace(json, pos);
 
-            // if (json[pos] == ',') {
-            //     pos++; // Skip ','
-            // }//useless most likely
+            
             if (json[pos] == '}') {
-                // pos++; // Skip '}'
+                
                 break;
             }
             else {
@@ -165,17 +154,15 @@
         
         while (pos < json.length()) {
 
-            // if(!validateKey(json, pos)) return false;
+        
 
             if (!validateValue(json, pos)) {
                 return false;
-            }//validate key first or perhaps validate
+            }
 
             skipWhitespace(json, pos);
 
-            // if (json[pos] == ',') {
-            //     pos++; // Skip ','
-            // }//useless most likely
+            
             if (json[pos] == ']') {
                 // pos++; // Skip '}'
                 break;
@@ -192,10 +179,7 @@
     bool MyController::validateValue(const std::string& json, size_t& pos) {
 
         skipWhitespace(json, pos);
-        // if (pos == json.length() - 1) {
-        //     std::cout << "test";
-        //     return true;
-        // }
+       
 
         if (json[pos] == '{') {
             if(!validateObject(json, pos)) return false;
@@ -280,11 +264,9 @@
 
         if (json[++pos] != ',')
         {
-            // std::cout<<json[pos] << " " << pos << " ";
-            // std::cout << "Currently at: " << json[pos] << " Number: " << pos << std::endl;
+            
             skipWhitespace(json, pos);
-            // std::cout << "Currently at: " << json[pos] << " Number: " << pos << std::endl;
-            // std::cout << json[pos];
+            
             if (json[pos] == '}') {
                 // pos++;
                 return true;
@@ -302,7 +284,7 @@
             
         }
 
-        // if (pos >= json.length() - 1) return true;
+        
         
         pos++;
         return validateValue(json, pos);
